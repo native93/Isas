@@ -1,0 +1,18 @@
+{{extend 'layout.html'}}
+<!--<h1 style="text-align:center">Welcome to admin_interface</h1>-->
+ <marquee onmouseover="this.stop();" onmouseout="this.start();" style="font-size:20px;color:#2F4F4F;font-family:new century schoolbook"direction="right">Welcome to Admin Interface</marquee>
+ <br/><br/><br/><br/>
+<div style="float:left;border-radius:15px;-moz-border-radius:15px;-webkit-border-radius: 15px;border: 1px solid #aaa;font-size: inherit;min-width: 4em;padding: 3px 12px 3px 12px;font-family: sans-serif;color:#000000;background-color:#8FBC8F" onmouseover="this.style.background='#C11B17'" onmouseout="this.style.background='#8FBC8F'">
+{{=A(T("Add Grades"), _href=URL('add_grades'), _class='btn',
+     _style='margin-top: 1em;color:#000000')}}
+</div>
+<div style="float:right;border-radius:15px;-moz-border-radius:15px;-webkit-border-radius: 15px;border: 1px solid #aaa;font-size: inherit;min-width: 4em;padding: 3px 12px 3px 12px;font-family: sans-serif;color:#000000;background-color:#8FBC8F" onmouseover="this.style.background='#C11B17'" onmouseout="this.style.background='#8FBC8F'">
+{{=A(T("Add Courses"), _href=URL('add_courses'), _class='btn',
+_style='margin-top: 1em;color:#000000')}}
+</div>
+<br/><br/><br/><br/><br/><br/><br/>
+<div style="float:left;border-radius:15px;-moz-border-radius:15px;-webkit-border-radius: 15px;border: 1px solid #aaa ;font-size: inherit;min-width: 4em;padding: 3px 12px 3px 12px;font-family: sans-serif;color:#000000;background-color:#8FBC8F" onmouseover="this.style.background='#C11B17'" onmouseout="this.style.background='#8FBC8F'">
+{{=A(T("Update timings"), _href=URL('portal_timing'), _class='btn',
+     _style='margin-top: 1em;color:#000000;')}}
+</div>
+<!--{{#=form}}-->

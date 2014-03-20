@@ -1,0 +1,23 @@
+<html>
+		<body>
+<h1 style="text-align:center;text-decoration:underline"> Report </h1>
+<b>Name :- </b>{{=det.full_name}}<br/>
+				<b>    Roll No. :- </b>{{=det.roll_no}}<br/>
+				<b>Branch . :-</b>{{=det.branch}} <br/>
+	<b>Sem - {{=sem}}</b><br/>
+	<b>SGPA - {{=sg}}</b><br/>
+	<b>CGPA - {{=session.c}}</b><br/><br/>
+    <table width="30%" align="center">
+        <thead>
+            <th style="text-align:left">Course Name</th>
+            <th style="text-align:left">Grade</th>
+    </thead>
+    {{for i in grd:}}
+    <tr>
+        <td>{{=i.course.name}}</td>
+        <td>{{=i.grade.grade}}</td>
+    </tr>
+	{{pass}}
+	</table>
+	</body>
+	</html>

@@ -1,0 +1,4 @@
+{{extend 'layout.html'}}
+<h2 style="text-align:left">Registration</h2><br/>
+<marquee direction="right" size='+2'>Enter personal details</marquee><br/><br/>
+{{=form}}

@@ -1,0 +1,15 @@
+{{right_sidebar_enabled=True}}
+{{left_sidebar_enabled=True}}
+{{extend 'layout.html'}}
+<!--<h1 style="text-align:center">Welcome to admin_interface</h1>-->
+{{block left_sidebar}}
+{{=A(T("Add Courses"), _href=URL('add_courses'), _class='btn',
+     _style='margin-top: 1em;')}}
+{{=A(T("Add Grades"), _href=URL('add_grades'), _class='btn',
+     _style='margin-top: 1em;')}}
+{{end}}
+{{block right_sidebar}}
+{{=A(T("Update timings"), _href=URL('portal_timing'), _class='btn',
+     _style='margin-top: 1em;')}}
+{{end}}
+<!--{{#=form}}-->

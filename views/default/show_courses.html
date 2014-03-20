@@ -1,0 +1,15 @@
+{{extend 'layout.html'}}
+<!--{{for i in session.list_courses:}}
+<h1>list={{=i}}</h1>
+{{pass}}-->
+<div style="color:#2F4F4F">
+		<b style="color:#2F4F4F">Student's Name - </b>{{=session.user_name}}<br/><br/>
+</div>
+<h2>Courses Registered for:</h2>
+<div style="color:#2F4F4F;font-size:15px">
+<ul>
+{{for i in courses:}}
+<li>{{=i.name}}</li>
+{{pass}}
+</ul>
+</div>

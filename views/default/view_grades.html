@@ -1,0 +1,30 @@
+{{extend 'layout.html'}}
+<div style="font-size:15px;font-family:Mariad Pro;color:#2F4F4F">
+		<b style="color:#2F4F4F">Name - </b>{{=det.full_name}}<br/>
+		<div style="float:right">
+				<div style="float:left;border-radius:15px;-moz-border-radius:15px;-webkit-border-radius: 15px;border: 1px solid #aaa;font-size:inherit;min-width: 4em;padding: 3px 12px 3px 20px;font-family: sans-serif;color:#000000;background-color:#B0C4DE" onmouseover="this.style.background='#C11B17'" onmouseout="this.style.background='#B0C4DE'">
+						{{=A(T("Report"), _href=URL('report_make',args=[session.sem,sg]), _class='btn',_style='margin-top: 1em;color:#000000')}}</div>
+				<br/><br/><div style="float:left;border-radius:15px;-moz-border-radius:15px;-webkit-border-radius: 15px;border: 1px solid #aaa;font-size:inherit;min-width: 4em;padding: 3px 12px 3px 15px;font-family: sans-serif;color:#000000;background-color:#B0C4DE" onmouseover="this.style.background='#C11B17'" onmouseout="this.style.background='#B0C4DE'">
+		{{=A(T("Email report"), _href=URL('mail_send',args=[session.sem,sg]), _class='btn',_style='margin-top: 1em;color:#000000')}}</div>
+	 <br/><br/><br/><br/>
+	 {{=form}}
+</div>
+<b style="color:#2F4F4F">Roll No. - </b>{{=det.roll_no}}<br/>
+<b style="color:#2F4F4F">Branch   - </b>{{=det.branch}} <br/><br/>
+<div style="color:#2F4F4F">
+		<h3 style="color:#2F4F4F">Sem - {{=session.sem}}</h3>
+		<b>SGPA - {{=sg}}</b></br></br>
+		<b>CGPA - {{=session.c}}</b></div></br>
+<table border="0px #B0B0B0" style="background-color:#8FBC8F">
+	<thead>
+			<th style="background: -moz-linear-gradient(top, #000000 0, #DBDBDB 110%);background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #000000), color-stop(100%, #DBDBDB));filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F0F0F0', endColorstr='#DBDBDB', GradientType=0);border: 1px solid #B0B0B0;color: #444;font-size: 16px;font-weight: bold;padding: 3px 10px;"><div style="color:#E0FFFF">Course Name</div></th>
+			<th style="background: -moz-linear-gradient(top, #000000 0, #DBDBDB 110%);background: -webkit-gradient(linear, left top, leftbottom, color-stop(0%, #F0F0F0), color-stop(100%, #DBDBDB));filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F0F0F0',endColorstr='#DBDBDB', GradientType=0);border: 1px solid #B0B0B0;color: #444;font-size: 16px;font-weight: bold;padding: 3px 10px;"><div style="color:#E0FFFF">Grade</div></th>
+	</thead>
+    {{for i in grd:}}
+    <tr>
+			<td style="padding: 3px 10px;"><div style="color:black">{{=i.course.name}}</div></td>
+			<td style="padding: 3px 10px;"><div style="color:black">{{=i.grade.grade}}</div></td>
+    </tr>
+	{{pass}}
+</table>
+</div>

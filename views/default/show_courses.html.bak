@@ -1,0 +1,15 @@
+{{extend 'layout.html'}}
+<!--{{for i in session.list_courses:}}
+<h1>list={{=i}}</h1>
+{{pass}}-->
+<h3>Student's Name</h3><b>{{=session.user_name}}
+<h2>Courses Registered for:</h2>
+<ul>
+{{for i in courses:}}
+<li>{{=i.name}}</li>
+<!--<h2>c={{=session.c}}</h2>
+<h2>a={{=session.a}}</h2>
+<h3>b={{=session.b}}</h3>
+<h3>d={{=session.d}}</h3>-->
+{{pass}}
+</ul>

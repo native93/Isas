@@ -1,0 +1,16 @@
+Name :- {{=det.full_name}}<br/>
+    Roll No. :-{{=det.roll_no}}<br/>
+    Branch . :-{{=det.branch}} <br/>
+    <b>SGPA - {{=cg}}</b>
+    <table width="30%">
+        <thead>
+            <th>Course Name</th>
+            <th>Grade</th>
+    </thead>
+    {{for i in grd:}}
+    <tr>
+        <td>{{=i.course.name}}</td>
+        <td>{{=i.grade.grade}}</td>
+    </tr>
+	{{pass}}
+    </table>

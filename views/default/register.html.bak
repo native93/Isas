@@ -1,0 +1,15 @@
+{{extend 'layout.html'}}
+<h3 style='color:red'><i>Please Check the courses to register -</i></h3>
+<b>Name - {{=session.user_name}}</b>
+<form>
+    <table>
+    <tr>
+    {{for i in courses:}}
+        <td>{{=i.name}}</td><td><input type="checkbox" name='{{=i.id}}' value="Yes" /></td>
+        <td>Credits - {{=i.credits}}</td>
+    <br/>
+     </tr>
+{{pass}}
+    </table>
+    <input type="submit"/>
+</form>

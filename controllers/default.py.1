@@ -1,0 +1,111 @@
+# -*- coding: utf-8 -*-
+# this file is released under public domain and you can use without limitations
+
+#########################################################################
+## This is a samples controller
+## - index is the default action of any application
+## - user is required for authentication and authorization
+## - download is for downloading files uploaded in the db (does streaming)
+## - call exposes all registered services (none by default)
+#########################################################################
+#def login():
+#    form=SQLFORM_factory(db.Field('username','string',requires=IS_NOT_EMPTY()),
+#                       db.Field('password','password',requires=IS_NOT_EMPTY()))
+#    if form.accepts(request.vars,session):
+#        x=db((db.admin.username==form.vars.username)&(db.auth_admin.password==form.vars.password)).select()
+#        y=db((db.student.username==form.vars.username)&(db.student.password==form.vars.password)).select()
+#    elif form.errors:
+#        response.flash='Errors in form'
+#    return dict(form=form)
+from gluon import current
+@auth.requires_login()
+def index():
+    session.user_id=auth.user.id
+    session.user_name=auth.user.first_name
+    if auth.has_membership(role='admin'):
+        redirect(URL('admin_interface'))
+    """
+    example action using the internationalization operator T and flash
+    rendered by views/default/index.html or views/generic.html
+
+    if you need a simple wiki simple replace the two lines below with:
+    return auth.wiki()
+    """
+    response.flash = T("Welcome to Isas portal!!")
+    return dict()
+def admin_interface():
+    return dict()
+def register():
+   # form=SQLFORM.factory(        #db.Field('course_id',db.grade.course_id,requires=IS_IN_DB(db,db.course.id,'db.course.name'),widget=SQLFORM.widgets.multiple.widget,label='Select   #Courses'))
+ #   if form.accepts(request.vars,session) :
+ #       response.flash='Entry recorded !!'
+ #   elif form.errors:
+ #       response.flash='Error in forms !! Please fill it again'
+    courses=db(db.course.id>0).select(db.course.name,db.course.code,db.course.credits,db.course.id)
+    #myrecords=db(db.grade.id>0).select(db.course)
+    session.list_courses=[]
+    if request.vars:
+        for i in courses:
+            id1=i.table.id
+            session.c=request.vars.id1
+            if request.vars.id1:
+                session.a=1
+                value=request.vars['%r'%i.id]#[i.id]
+                if str(value)=="YES":
+                   session.b=1
+                   session.list_courses.append(str(value))
+        redirect(URL('show_courses'))
+    return dict(courses=courses)
+def show_courses():
+    return dict()
+def user():
+    """
+    exposes:
+    http://..../[app]/default/user/login
+    http://..../[app]/default/user/logout
+    http://..../[app]/default/user/register
+    http://..../[app]/default/user/profile
+    http://..../[app]/default/user/retrieve_password
+    http://..../[app]/default/user/change_password
+    use @auth.requires_login()
+        @auth.requires_membership('group name')
+        @auth.requires_permission('read','table name',record_id)
+    to decorate functions that need access control
+    """
+    return dict(form=auth())
+
+
+def download():
+    """
+    allows downloading of uploaded files
+    http://..../[app]/default/download/[filename]
+    """
+    return response.download(request, db)
+
+
+def call():
+    """
+    exposes services. for example:
+    http://..../[app]/default/call/jsonrpc
+    decorate with @services.jsonrpc the functions to expose
+    supports xml, json, xmlrpc, jsonrpc, amfrpc, rss, csv
+    """
+    return service()
+
+
+@auth.requires_signature()
+def data():
+    """
+    http://..../[app]/default/data/tables
+    http://..../[app]/default/data/create/[table]
+    http://..../[app]/default/data/read/[table]/[id]
+    http://..../[app]/default/data/update/[table]/[id]
+    http://..../[app]/default/data/delete/[table]/[id]
+    http://..../[app]/default/data/select/[table]
+    http://..../[app]/default/data/search/[table]
+    but URLs must be signed, i.e. linked with
+      A('table',_href=URL('data/tables',user_signature=True))
+    or with the signed load operator
+      LOAD('default','data.load',args='tables',ajax=True,user_signature=True)
+    """
+    return dict(form=crud())

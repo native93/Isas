@@ -1,0 +1,26 @@
+{{right_sidebar_enabled=True}}
+{{left_sidebar_enabled=True}}
+{{extend 'layout.html'}}
+<marquee style="font-size:20px;color:#2F4F4F;font-family:new century schoolbook"direction="right">Welcome to Isas</marquee>
+<br/><br/><br/><br/><br/><br/>
+<div style="float:left;border-radius:15px;-moz-border-radius:15px;-webkit-border-radius: 15px;border: 1px solid #aaa;font-size: inherit;min-width: 4em;padding: 3px 12px 3px 12px;font-family: sans-serif;color:#000000;background-color:#8FBC8F" onmouseover="this.style.background='#C11B17'" onmouseout="this.style.background='#8FBC8F'" >		<!--		<a href="view_grades">View your Grades</a>-->
+	{{=A(T("View your Grades"), _href=URL('view_grades'), _class="btn",
+		_style="margin-top: 1em;color:#000000;font-family:Times Roman")}}
+</div>
+<div style="text-align:right">
+		{{if f==1:}}
+		<div style="float:right;border-radius:15px;-moz-border-radius:15px;-webkit-border-radius: 15px;border: 1px solid #aaa;font-size: inherit;min-width: 4em;padding: 3px 12px 3px 12px;font-family: sans-serif;color:#000000;background-color:#8FBC8F" onmouseover="this.style.background='#C11B17'" onmouseout="this.style.background='#8FBC8F'">
+{{=A(T("Register for Courses"), _href=URL('register'), _class='btn',
+_style="margin-top: 1em;color:black")}}
+</div>
+	 {{else:}}
+	 <div style="font-size:15px;color:black">
+			 {{=T('Registration portal is closed')}}
+	 </div>
+{{pass}}
+</div>
+<!--<ul>
+  <li>{{=A(T("Online examples"), _href=URL('examples','default','index'))}}</li>
+  <li><a href="http://web2py.com">web2py.com</a></li>
+  <li><a href="http://web2py.com/book">{{=T('Documentation')}}</a></li>
+</ul>-->
